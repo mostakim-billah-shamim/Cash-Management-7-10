@@ -23,14 +23,6 @@ A simple, robust, and dynamic web application built with **Django (Python)** and
 - **Frontend:** HTML5, CSS3, Bootstrap 5
 - **Database:** SQLite (Default / Easily swappable to PostgreSQL/MySQL)
 
----
-
-## 📸 Screenshots & Architecture
-
-> Add your dashboard or landing page screenshots inside a `screenshots/` directory and link them here to make it visually pleasing!
-> Example: `![Dashboard](screenshots/dashboard.png)`
-
----
 
 ## ⚙️ Installation & Setup Guide
 
