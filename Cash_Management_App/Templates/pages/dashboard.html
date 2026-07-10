@@ -1,0 +1,128 @@
+{% extends 'base/base.html' %}
+
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+
+
+{% block body %}
+
+<h1 class="text-center text-primary">
+    Welcome to Cash Management System
+</h1>
+
+
+<div class="row justify-content-center text-center">
+    <div class="card text-white bg-primary m-3" style="max-width: 14rem;">
+        <div class="card-header">Cash Added</div>
+        <div class="card-body">
+            <h5 class="card-title">+{{cash}}</h5>
+
+        </div>
+    </div>
+    <div class="card text-white bg-secondary m-3" style="max-width: 14rem;">
+        <div class="card-header">Cash Expensed</div>
+        <div class="card-body">
+            <h5 class="card-title">-{{expense}}</h5>
+        </div>
+    </div>
+    <div class="card text-white bg-success m-3" style="max-width: 14rem;">
+        <div class="card-header">Cash Remain</div>
+        <div class="card-body">
+            <h5 class="card-title">{{remain}}</h5>
+        </div>
+    </div>
+
+
+
+
+    <div class="card text-white bg-info m-3" style="max-width: 14rem;">
+        <div class="card-header">Tax Payable Amount</div>
+        <div class="card-body">
+            <h5 class="card-title">
+                
+                                   
+                {{tax}}
+                
+            </h5>
+
+        </div>
+    </div>
+    <div class="card text-white bg-warning m-3" style="max-width: 14rem;">
+        <div class="card-header">Payable Tax</div>
+        <div class="card-body">
+            <h5 class="card-title">
+                {{ptax}}
+            </h5>
+        </div>
+    </div>
+   
+</div>
+
+
+
+<table class="table table-success table-striped text-center" border="1">
+  <thead>
+    <h1 class="card-header bg-success text-center text-white">Cash Added</h1>
+    <tr>
+      <th scope="col">Serial</th>
+      <th scope="col">Source</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Description</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for i in Cdata %}
+        
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.source}}</td>
+      <td>{{i.amount}}</td>
+      <td>{{i.description}}</td>
+      <td>{{i.datetime}}</td>
+      <td>
+        <a class="btn btn-outline-primary" href="{% url 'editCash' i.id %}">Edit</a>
+        <a class="btn btn-outline-danger" href="{% url 'delCash' i.id %}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+<table class="table table-danger table-striped text-center" border="1">
+  <thead>
+    <h1 class="card-header bg-danger text-center text-white">Expense Added</h1>
+    <tr>
+      <th scope="col">Serial</th>
+      <th scope="col">Reason</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Created At</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for i in Edata %}
+        
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.reason}}</td>
+      <td>{{i.amount}}</td>
+      <td>{{i.datetime}}</td>
+      <td>
+        <a class="btn btn-outline-primary" href="{% url 'editExpense' i.id %}">Edit</a>
+        <a class="btn btn-outline-danger" href="{% url 'delExpense' i.id %}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock body %}

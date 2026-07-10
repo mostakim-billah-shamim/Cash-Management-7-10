@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+
+{% block title %}
+    {{title}}
+{% endblock title %}
+    
+
+{% block body %}
+    
+<div class="row justify-content-center m-4">
+    <h1 class="text-center text-info">{{title}}</h1>
+    <div class="col-6 shadow-lg rounded-4 card p-4">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <button class="btn btn-success" type="submit">{{btn}}</button>
+            
+            {% if '/login/' in request.path %}
+            Don't Have An Account? <a class="btn rounded-pill btn-primary" href="{% url 'register' %}">Register</a>
+            {% elif '/register/' in request.path %}
+            Already Have An Account? <a class="btn rounded-pill btn-primary" href="{% url 'login' %}">Login</a>
+                
+            {% endif %}
+                
+        </form>
+    </div>
+
+</div>
+
+{% endblock body %}
+    
